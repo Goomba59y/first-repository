@@ -1,0 +1,219 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://pics/brocolie.png" type="Texture" id=1]
+[ext_resource path="res://potatoscript/ai(brocolie).gd" type="Script" id=2]
+[ext_resource path="res://pics/ouch(brocolie).png" type="Texture" id=3]
+[ext_resource path="res://pics/flame_thrower.tscn" type="PackedScene" id=4]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 192, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 192, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 192, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 1 )
+region = Rect2( 192, 192, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 256, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 1 )
+region = Rect2( 128, 256, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=21]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": false,
+"name": "teleport",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": false,
+"name": "behind_u",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 20 ) ],
+"loop": true,
+"name": "ouch",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 14.3545, 25.8373 )
+
+[sub_resource type="RectangleShape2D" id=23]
+extents = Vector2( 55.0545, 94.4049 )
+
+[sub_resource type="CircleShape2D" id=24]
+radius = 58.3615
+
+[sub_resource type="CircleShape2D" id=25]
+radius = 1383.9
+
+[node name="brocolie" type="KinematicBody2D"]
+position = Vector2( 0, -1.88773 )
+scale = Vector2( 2, 2 )
+collision_layer = 24
+collision_mask = 2147483672
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 21 )
+animation = "idle"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.471939, 0 )
+shape = SubResource( 22 )
+
+[node name="left" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left"]
+visible = false
+position = Vector2( -73.5, 0 )
+shape = SubResource( 23 )
+
+[node name="right" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right"]
+visible = false
+position = Vector2( 73.5, 0 )
+shape = SubResource( 23 )
+
+[node name="behind" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 27.5 )
+emitting = false
+amount = 40
+lifetime = 1.2
+one_shot = true
+explosiveness = 0.58
+randomness = 1.0
+fixed_fps = 60
+direction = Vector2( 0, -1 )
+initial_velocity = 45.0
+color = Color( 0.607843, 0.462745, 0.32549, 1 )
+
+[node name="u" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 27.5 )
+emitting = false
+amount = 40
+lifetime = 1.2
+one_shot = true
+explosiveness = 0.58
+randomness = 1.0
+fixed_fps = 60
+direction = Vector2( 0, -1 )
+initial_velocity = 45.0
+color = Color( 0.196078, 0.643137, 0.0313726, 1 )
+
+[node name="ouch" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 5
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.92
+lifetime_randomness = 0.14
+direction = Vector2( 0, -2 )
+initial_velocity = 40.0
+color = Color( 0, 0.678431, 0.207843, 1 )
+
+[node name="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 14.444 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="attack_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_area"]
+shape = SubResource( 24 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 25 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="t_timer" type="Timer" parent="."]
+wait_time = 0.381
+one_shot = true
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[connection signal="body_entered" from="left" to="." method="left_entered"]
+[connection signal="body_entered" from="right" to="." method="right_entered"]
+[connection signal="body_entered" from="attack_area" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="attack_area" to="." method="_on_attack_area_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="name_getter"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_health"]
+[connection signal="timeout" from="t_timer" to="." method="_on_t_timer_timeout"]

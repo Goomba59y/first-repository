@@ -1,0 +1,2 @@
+extends LightOccluder2D
+

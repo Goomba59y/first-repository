@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/PEW PEW.ogg-10fe589c9a80fef5c323642d201b91ea.oggstr"
+
+[deps]
+
+source_file="res://Sound/PEW PEW.ogg"
+dest_files=[ "res://.import/PEW PEW.ogg-10fe589c9a80fef5c323642d201b91ea.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

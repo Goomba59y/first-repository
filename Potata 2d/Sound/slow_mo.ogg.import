@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/slow_mo.ogg-49e9930bf1af19f4d62a4078887aa0f7.oggstr"
+
+[deps]
+
+source_file="res://Sound/slow_mo.ogg"
+dest_files=[ "res://.import/slow_mo.ogg-49e9930bf1af19f4d62a4078887aa0f7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
